@@ -79,6 +79,7 @@ import Slider from "react-slick";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Profile} from "./Profile.jsx";
+import CreateAWB from "./CreateAWB.jsx"
 
 const Navbar = () => {
     const slides = [
@@ -128,7 +129,7 @@ function LinkTab(props) {
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    const [slides, setSlides] = useState([]);
+    //const [slides, setSlides] = useState([]);
     // const routes = ["./datepicker"]
 
     const handleChangePage = (event, newPage) => {
@@ -195,15 +196,23 @@ function LinkTab(props) {
             
             <Grid container style={{height: "50px", Position: "fixed"}}>
                 <Grid item xs={6}>
-                    <Tabs style={{marginLeft: "50px"}} textAlign="right" indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
+                    {/* <Tabs style={{marginLeft: "50px"}} textAlign="right" indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}> */}
                     {/* <Link to='/create'>  */}
                     {/* <a style={{color:"white"}}> */}
-                    
+{/*                     
                         <LinkTab label= "CreateAWB" href="/createAWB" />
                         <LinkTab label= "Print" href="/print"/>
                         <LinkTab label= "Track Shipment" href="/trackshipment"/>
-                        <LinkTab label= "search" href="/search"/>
-                    </Tabs>
+                        <LinkTab label= "search" href="/search"/> */}
+                    {/* </Tabs> */}
+
+                    <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px" }}> 
+                        <Link to ="createAWB" component={CreateAWB}>CreateAWB
+                            {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
+                        </Link>
+                    </Box>
+
+
                 </Grid>
                 <Grid item xs={2}/>
 
