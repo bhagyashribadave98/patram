@@ -80,12 +80,12 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Profile} from "./Profile.jsx";
 import CreateAWB from "./CreateAWB.jsx"
+import Print from "./Print";
+import TrackShipment from "./TrackShipment";
+import Search from "./Search";
 
 const Navbar = () => {
     const slides = [
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
         {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
         {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
         {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
@@ -112,16 +112,6 @@ function LinkTab(props) {
     );
   }
   
-
-    const slideLeft = () => {
-        var slider = document.getElementById("slider");
-        slider.scrollLeft = slider.scrollLeft + 500;
-    }
-
-    const slideRight = () => {
-        var slider = document.getElementById("slider");
-        slider.scrollRight = slider.scrollRight - 500;
-    }
 
     const [value, setvalue] = useState(0);
     const [apiData, setApiData] = useState([])
@@ -188,13 +178,13 @@ function LinkTab(props) {
      return(
         <>
         
-        <div className="header" style={{position:"static"}}>
-        <img style={{height: "40px", textAlign: "center", position:"absolute", marginTop:"-100px"}} className='logo' src="https://www.aircargoweek.com/wp-content/uploads/2015/06/IATA_Logo.svg_.png"/>
-        </div>   
-       <AppBar style={{height: "50px", marginTop: "50px", whiteSpace: "nowrap"}}>
-        <Toolbar style={{height: "50px"}} >
-            
-            <Grid container style={{height: "50px", Position: "fixed"}}>
+        {/* <div className="header" style={{position:"absolute"}}> */}
+        {/* </div>    */}
+       {/* <AppBar style={{height: "50px", marginTop: "50px", whiteSpace: "nowrap"}}>
+        <Toolbar style={{height: "50px"}} > */}
+            <img style={{height: "40px", textAlign: "center", paddingTop:"-80px"}} className='logo' src="https://www.aircargoweek.com/wp-content/uploads/2015/06/IATA_Logo.svg_.png"/>
+
+            <Grid container style={{height: "50px", backgroundColor:"royalblue", display:"flex"}}>
                 <Grid item xs={6}>
                     {/* <Tabs style={{marginLeft: "50px"}} textAlign="right" indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}> */}
                     {/* <Link to='/create'>  */}
@@ -206,48 +196,66 @@ function LinkTab(props) {
                         <LinkTab label= "search" href="/search"/> */}
                     {/* </Tabs> */}
 
-                    <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px" }}> 
-                        <Link to ="createAWB" component={CreateAWB}>CreateAWB
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex" }}> 
+                        <a href ="createAWB" component={CreateAWB} style={{color: "#fff"}}>CreateAWB
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
-                        </Link>
+                        </a>
+                    </Box>
+
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
+                        <a href ="print" component={Print} style={{color: "#fff"}}>Print
+                            {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
+                        </a>
+                    </Box>
+
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
+                        <a href ="trackshipment" component={TrackShipment} style={{color: "#fff"}}>Track Shipment
+                            {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
+                        </a>
+                    </Box>
+
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
+                        <a href ="search" component={Search} style={{color: "#fff"}}>Search
+                            {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
+                        </a>
                     </Box>
 
 
                 </Grid>
                 <Grid item xs={2}/>
 
-            <Grid style={{position: "absolute", paddingLeft:"920px"}}>    
-                <Grid item xs={2}>    
-                    <Box sx={{ display: 'flex', flexDirection: 'column' ,spacing:"50px"}}>
+            <Grid style={{display: 'flex', whiteSpace:"nowrap"}}>    
+                <Grid style={{display: 'flex'}}item xs={2}>    
+                    <Box sx={{ display: 'flex' ,spacing:"50px"}}>
                         <Box sx={{ display: 'flex' }} style={{textAlign: 'center'}} indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
-                                <Box className="company_name" p={3} style={{paddingTop:"12px", textAlign: 'center'}} >
+                                <Box className="company_name" p={3} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}} >
                                 MPHASIS
                                 </Box>
-                            <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px" }} >
+                            <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}} >
                                 <Link to ='/profile' component={Profile}>
                                     <PersonIcon style={{color: "#fff"}}/>
                                 </Link>
                             </Box>
                     
-                    <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px" }}> 
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
                         <a href='/setting' >
-                            <SettingsIcon className='setting' style={{color: "white"}}/>
+                            <SettingsIcon className='setting' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px", justifyContent: 'end'}}> 
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
                         <a href='/home' >
-                            <HomeIcon className='home' style={{color: "white"}}/>
+                            <HomeIcon className='home' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{ display: 'flex', alignItems: 'center', paddingTop: "1px"  }}> <a href='/help' >
-                        <HelpIcon className='help' style={{color: "white"}}/>
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> <a href='/help' >
+                        <HelpIcon className='help' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{ display: 'flex', alignItems: 'center' , paddingTop: "1px"}}> <a href='/logout' >
-                        <LogoutIcon className='logout' style={{color: "white"}}/>
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> <a href='/logout' >
+                        <LogoutIcon className='logout' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
@@ -259,12 +267,12 @@ function LinkTab(props) {
 
 
             </Grid> 
-        </Toolbar>
-       </AppBar>
+        {/* </Toolbar>
+       </AppBar> */}
                     <div>
                         <Box>
                         
-                            <Paper elevation={3} style={{height: "79.5vh", width: "100%", marginTop:"105px"}}>
+                            <Paper elevation={3} style={{height: "79vh", width: "100%", marginTop:"-40px"}}>
                                 <Container maxWidth="lg" style={{marginLeft:"20px"}}>
                                     <h4 style={{ paddingLeft:"10px", textAlign: 'left', fontSize: "20px", marginTop: "47px"}}>Manage Subscription</h4>
                                 </Container>
@@ -281,7 +289,6 @@ function LinkTab(props) {
 
 
                                 <div id="main-slider-container">
-                                    <ArrowBackIosIcon className="slider-icon left" onClick={slideLeft}/>
                                         <div style={{marginLeft:"40px"}}>
                                             <h5 style={{marginTop: "30px"}}>Freight</h5>
                                             <h5 style={{marginTop: "-17px"}}>Forwarders</h5>
@@ -290,7 +297,7 @@ function LinkTab(props) {
                                             <h5 style={{marginTop: "-10px"}}>Active</h5>
                                         </div>
             
-                                    <div id="slider">
+                                    <div id="slider" style={{marginLeft:"20px"}}>
                                     {
                                         slides.map((slide,index) => {
                                         return(
@@ -305,7 +312,6 @@ function LinkTab(props) {
                                     })
                                     }
                                     </div>
-                                    <ArrowForwardIosIcon className="slider-icon right" onClick={slideRight}/>
                                 </div>
 
                                 <h4 style={{margin:0, paddingTop:"5px"}}>Search Results for</h4>

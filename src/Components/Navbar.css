@@ -14,10 +14,14 @@
 
 /* .css-11b3ww9-MuiPaper-root-MuiAppBar-root{
     position: fixed;
-} */ */
-#MuiGrid-root css-vj1n65-MuiGrid-root{
+} */
+/* #MuiGrid-root css-vj1n65-MuiGrid-root{
   position: absolute;
   padding-left: 920px;
+} */
+
+.css-1osj8n2-MuiGrid-root{
+  display: flex;
 }
 
 .table {
@@ -123,7 +127,7 @@
   }
 
   .slider-card {
-    width: 66px;
+    width: 70px;
     height: 135px;
     background: rgb(50, 155, 224);
     border-radius: 5px;
