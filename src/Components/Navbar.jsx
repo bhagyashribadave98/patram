@@ -78,7 +78,7 @@ import './Navbar.css';
 import Slider from "react-slick";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import {Profile} from "./Profile.jsx";
+// import {Profile} from "./Profile.jsx";
 import CreateAWB from "./CreateAWB.jsx"
 import Print from "./Print";
 import TrackShipment from "./TrackShipment";
@@ -100,17 +100,7 @@ const Navbar = () => {
         {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66}
 ];
 
-function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
+
   
 
     const [value, setvalue] = useState(0);
@@ -184,8 +174,8 @@ function LinkTab(props) {
         <Toolbar style={{height: "50px"}} > */}
             <img style={{height: "40px", textAlign: "center", paddingTop:"-80px"}} className='logo' src="https://www.aircargoweek.com/wp-content/uploads/2015/06/IATA_Logo.svg_.png"/>
 
-            <Grid container style={{height: "50px", backgroundColor:"royalblue", display:"flex"}}>
-                <Grid item xs={6}>
+            <Grid container  style={{height: "50px", backgroundColor:"royalblue", display:"flex"}}>
+                <Grid item xs={6} id="navbar">
                     {/* <Tabs style={{marginLeft: "50px"}} textAlign="right" indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}> */}
                     {/* <Link to='/create'>  */}
                     {/* <a style={{color:"white"}}> */}
@@ -197,25 +187,25 @@ function LinkTab(props) {
                     {/* </Tabs> */}
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex" }}> 
-                        <a href ="createAWB" component={CreateAWB} style={{color: "#fff"}}>CreateAWB
+                        <a href ="createAWB" component={CreateAWB} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>CreateAWB
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="print" component={Print} style={{color: "#fff"}}>Print
+                        <a href ="print" component={Print} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Print
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="trackshipment" component={TrackShipment} style={{color: "#fff"}}>Track Shipment
+                        <a href ="trackshipment" component={TrackShipment} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Track Shipment
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="search" component={Search} style={{color: "#fff"}}>Search
+                        <a href ="search" component={Search} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Search
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
@@ -224,15 +214,15 @@ function LinkTab(props) {
                 </Grid>
                 <Grid item xs={2}/>
 
-            <Grid style={{display: 'flex', whiteSpace:"nowrap"}}>    
-                <Grid style={{display: 'flex'}}item xs={2}>    
+            <Grid style={{display: 'flex'}}>    
+                <Grid item xs={4}>    
                     <Box sx={{ display: 'flex' ,spacing:"50px"}}>
-                        <Box sx={{ display: 'flex' }} style={{textAlign: 'center'}} indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
-                                <Box className="company_name" p={3} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}} >
+                        <Box style={{display: 'flex',textAlign: 'center'}} indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
+                                <Box className="company_name" p={3} sx={{alignItems: 'center', paddingTop: "16px", display:"flex"}} >
                                 MPHASIS
                                 </Box>
                             <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}} >
-                                <Link to ='/profile' component={Profile}>
+                                <Link to ='/profile'>
                                     <PersonIcon style={{color: "#fff"}}/>
                                 </Link>
                             </Box>

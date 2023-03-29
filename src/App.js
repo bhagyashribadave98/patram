@@ -1,27 +1,25 @@
 import react from "react"
+import * as ReactDOM from 'react-dom';
 import Navbar from "./Components/Navbar"
-// import CreateAWB from "./CreateAWB";
-// import {Profile} from "./Components/Profile";
-// import Profile from "./Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {Profile} from "./Components/Profile.jsx";
+import Print from "./Components/Print";
 
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
     <div>
       <Navbar />
         <Routes>
-          {/* <Route path="/CreateAWB" element={<CreateAWB/>}/> */}
-          {/* <Route path="/profile" element={<Profile/>}/> */}
-          {/* <Route exact path="/">
-            </Route> */}
-          {/* <Route path="/profile" element={<Profile/>}/> */}
+        <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/print' element={<Print />}></Route>
 
         </Routes>
         </div>
     </BrowserRouter>
-  )
+  );
+ 
 }  
 
-export default App
+export default App;

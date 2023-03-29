@@ -20,6 +20,10 @@
   padding-left: 920px;
 } */
 
+.a {
+  text-decoration: none;
+}
+
 .css-1osj8n2-MuiGrid-root{
   display: flex;
 }
@@ -62,6 +66,11 @@
     top: 50%;
     transform: translateY(-50%);
   } */
+
+#navbar{
+  display: flex-end;
+  flex-direction: row;
+}
 
 .calender{
   padding:0;
@@ -127,7 +136,7 @@
   }
 
   .slider-card {
-    width: 70px;
+    width: 69px;
     height: 135px;
     background: rgb(50, 155, 224);
     border-radius: 5px;
