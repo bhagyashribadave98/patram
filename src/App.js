@@ -7,18 +7,40 @@ import Print from "./Components/Print";
 
 
 function App() {
-  return (
-    <BrowserRouter>
-    <div>
-      <Navbar />
-        <Routes>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/print' element={<Print />}></Route>
+  // return (
+  //   <BrowserRouter>
+  //   <div>
+  //     <Navbar />
+  //       <Routes>
+  //       <Route path='/profile' component={<Profile />}></Route>
+  //       <Route path='/Print' component={<Print />}></Route>
 
-        </Routes>
-        </div>
-    </BrowserRouter>
-  );
+  //       </Routes>
+  //       </div>
+  //   </BrowserRouter>
+  // );
+
+  let Component
+  switch (window.location.pathname) {
+    case "/":
+      Component = <App /> 
+      break
+
+    case "/":
+      Component = <Print /> 
+      break
+
+    case "/":
+      Component = <Profile /> 
+      break  
+  }
+
+  return (
+    <>
+      <Navbar />
+      {Component}
+    </>
+  )
  
 }  
 
