@@ -75,14 +75,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Navbar.css';
-import Slider from "react-slick";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// import {Profile} from "./Profile.jsx";
+import Profile from "./Profile.jsx";
 import CreateAWB from "./CreateAWB.jsx"
 import Print from "./Print";
 import TrackShipment from "./TrackShipment";
 import Search from "./Search";
+import $ from "jquery"
 
 const Navbar = () => {
     const slides = [
@@ -164,18 +162,24 @@ const Navbar = () => {
     }, [])
 
 
+    $(document).ready(function () {
+        $('#experiment_id').DataTable({
+        lengthMenu: [ 3, 5, 10 ]
+        });
+    }); 
+
 
      return(
         <>
         
         {/* <div className="header" style={{position:"absolute"}}> */}
         {/* </div>    */}
-       {/* <AppBar style={{height: "50px", marginTop: "50px", whiteSpace: "nowrap"}}>
-        <Toolbar style={{height: "50px"}} > */}
+       
             <img style={{height: "40px", textAlign: "center", paddingTop:"-80px"}} className='logo' src="https://www.aircargoweek.com/wp-content/uploads/2015/06/IATA_Logo.svg_.png"/>
-
-            <Grid container  style={{height: "50px", backgroundColor:"royalblue", display:"flex"}}>
-                <Grid item xs={6} id="navbar">
+            <AppBar elevation={20} position="static" style={{height: "53px", width:"101.2%", marginLeft:"-8px", backgroundColor:"#1e90ff", fontWeight:"14px", boxShadow:"20px gray"}}>
+            <Toolbar>
+            
+                <Grid item xs={6} className="navbar">
                     {/* <Tabs style={{marginLeft: "50px"}} textAlign="right" indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}> */}
                     {/* <Link to='/create'>  */}
                     {/* <a style={{color:"white"}}> */}
@@ -187,25 +191,25 @@ const Navbar = () => {
                     {/* </Tabs> */}
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex" }}> 
-                        <a href ="createAWB" component={CreateAWB} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>CreateAWB
+                        <a href ="createAWB" component={CreateAWB} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>CreateAWB
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="print" component={Print} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Print
+                        <a href ="print" component={Print} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>Print
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="trackshipment" component={TrackShipment} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Track Shipment
+                        <a href ="trackshipment" component={TrackShipment} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>Track Shipment
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="search" component={Search} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem"}}>Search
+                        <a href ="search" component={Search} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>Search
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
                         </a>
                     </Box>
@@ -217,34 +221,34 @@ const Navbar = () => {
             <Grid style={{display: 'flex'}}>    
                 <Grid item xs={4}>    
                     <Box sx={{ display: 'flex' ,spacing:"50px"}}>
-                        <Box style={{display: 'flex',textAlign: 'center'}} indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
-                                <Box className="company_name" p={3} sx={{alignItems: 'center', paddingTop: "16px", display:"flex"}} >
+                        <Box style={{display: 'flex',textAlign: 'center', color: "#fff"}} indicatorColor="secondary" textColor="inherit" value={value} onChange={(e,val)=> setvalue(val)}>
+                                <Box className="company_name" p={3} sx={{alignItems: 'center', paddingTop: "16px", display:"flex", fontFamily:"sans-serif", fontSize:"1.1rem"}} >
                                 MPHASIS
                                 </Box>
-                            <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}} >
+                            <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}} >
                                 <Link to ='/profile'>
                                     <PersonIcon style={{color: "#fff"}}/>
                                 </Link>
                             </Box>
                     
-                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}}> 
                         <a href='/setting' >
                             <SettingsIcon className='setting' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}}> 
                         <a href='/home' >
                             <HomeIcon className='home' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> <a href='/help' >
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}}> <a href='/help' >
                         <HelpIcon className='help' style={{color: "fff"}}/>
                         </a>
                     </Box>
 
-                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> <a href='/logout' >
+                    <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}}> <a href='/logout' >
                         <LogoutIcon className='logout' style={{color: "fff"}}/>
                         </a>
                     </Box>
@@ -256,22 +260,22 @@ const Navbar = () => {
                 </Grid>
 
 
-            </Grid> 
-        {/* </Toolbar>
-       </AppBar> */}
-                    <div>
-                        <Box>
+            
+        </Toolbar>
+       </AppBar>
+                    {/* <div> */}
+                        {/* <Box> */}
                         
-                            <Paper elevation={3} style={{height: "79vh", width: "100%", marginTop:"-40px"}}>
-                                <Container maxWidth="lg" style={{marginLeft:"20px"}}>
-                                    <h4 style={{ paddingLeft:"10px", textAlign: 'left', fontSize: "20px", marginTop: "47px"}}>Manage Subscription</h4>
-                                </Container>
+                            <Paper elevation={23} style={{height: "79vh", maxWidth: "97%", marginTop:"-46px", marginLeft:"20px", borderRadius:"initial"}}>
+                                {/* <Container style={{marginLeft:"20px"}}> */}
+                                    <h4 style={{ paddingLeft:"10px", textAlign: 'left', fontSize: "20px", paddingTop: "7px", marginTop:"47px", fontFamily:"sans-serif"}}>Manage Subscription</h4>
+                                {/* </Container> */}
 
                                 
-                                <div className="date" style={{height:"10px", marginTop:"-20px", marginLeft:"40px"}}>
+                                <div id="date" style={{height:"10px", marginTop:"-20px", marginLeft:"40px"}}>
                                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <div className="calender">
-                                        <DatePicker label={'Select Starting Month'} views={['month', 'year']} />
+                                        <DatePicker size="xs" label='Select Starting Month' views={['month', 'year']} />
                                     </div>
                                     </LocalizationProvider>
                                 </div>
@@ -279,15 +283,15 @@ const Navbar = () => {
 
 
                                 <div id="main-slider-container">
-                                        <div style={{marginLeft:"40px"}}>
+                                        <div style={{marginLeft:"30px", color: "#fff", fontFamily:"sans-serif"}}>
                                             <h5 style={{marginTop: "30px"}}>Freight</h5>
                                             <h5 style={{marginTop: "-17px"}}>Forwarders</h5>
                                             <h5 style={{marginTop: "-5px"}}>Renewed/New</h5>
                                             <h5 style={{marginTop: "-10px"}}>Forcasted</h5>
-                                            <h5 style={{marginTop: "-10px"}}>Active</h5>
+                                            <h5 style={{marginTop: "-10px", color:"black"}}>Active</h5>
                                         </div>
             
-                                    <div id="slider" style={{marginLeft:"20px"}}>
+                                    <div id="slider" style={{marginLeft:"20px", fontFamily:"sans-serif", fontColor:"white"}}>
                                     {
                                         slides.map((slide,index) => {
                                         return(
@@ -296,97 +300,96 @@ const Navbar = () => {
                                                 <p className="slider-card-forwarders" style={{marginTop: "-10px", textAlign:"center"}}>{slide.forwarders}</p>
                                                 <p className="slider-card-renewed" style={{marginTop: "-5px", textAlign:"center"}}>{slide.renewed}</p>
                                                 <p className="slider-card-forcasted" style={{marginTop: "-1px", textAlign:"center"}}>{slide.forcasted}</p>
-                                                <p className="slider-card-active" style={{marginTop: "-5px", textAlign:"center"}}>{slide.active}</p>
+                                                <p className="slider-card-active" style={{marginTop: "-5px", textAlign:"center", color:"black"}}>{slide.active}</p>
                                             </div>
                                         )
                                     })
                                     }
                                     </div>
                                 </div>
-
-                                <h4 style={{margin:0, paddingTop:"5px"}}>Search Results for</h4>
-
-                                <Box sx={{ display: 'flex', flexDirection: 'row', border: 0.5, borderColor: "text.secondary" }} />
-                                <Box p={1} sx={{ display: 'flex', flexDirection: 'column' }}>
-                                    {/* <Paper sx={{ height: "40vh",width: '100%', overflow: 'hidden' }}> */}
-                                        <TableContainer>
-                                            <Table>
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell align="left" >Date Of Registration</TableCell>
-                                                        <TableCell align="left" >Company Name</TableCell>
-                                                        <TableCell align="left" >Email ID</TableCell>
-                                                        <TableCell align="left" >Date of Approval</TableCell>
-                                                        <TableCell align="left" >Prev Renew Date</TableCell>
-                                                        <TableCell align="left" >Next Renew Date</TableCell>
-                                                        <TableCell align="left" >Expired</TableCell>
-                                                        <TableCell align="left" >Payment/Renew status</TableCell>
-                                                        <TableCell align="left" >Payment Date</TableCell>
-                                                        <TableCell align="left" >Payment Mode</TableCell>
-                                                        <TableCell align="left" >AWSB Submitted Date</TableCell>
-                                                        <TableCell align="left" >AWB count</TableCell>
-                                                        <TableCell align="left" >Email Remainder</TableCell>
-                                                        <TableCell align="left" >Action</TableCell>
-                                    
-                                                    </TableRow>
-                                                </TableHead>
-
-                                                <TableBody>
-                                                    {apiData
-                                    
-                                                        .map(item => (
-                                                            <TableRow key={item.experiment_id}>
-                                                            <TableCell align="left" >{item.Date_Of_Registration}</TableCell>
-                                                            <TableCell align="left" >{item.Company_Name}</TableCell>
-                                                            <TableCell align="left" >{item.Email_ID}</TableCell>
-                                                            <TableCell align="left" >{item.Date_of_Approval}</TableCell>
-                                                            <TableCell align="left" >{item.Prev_Renew_Date}</TableCell>
-                                                            <TableCell align="left" >{item.Next_Renew_Date}</TableCell>
-                                                            <TableCell align="left" >{item.Expired}</TableCell>
-                                                            <TableCell align="left" >{item.Renew_status}</TableCell>
-                                                            <TableCell align="left" >{item.Payment_Date}</TableCell>
-                                                            <TableCell align="left" >{item.Payment_Mode}</TableCell>
-                                                            <TableCell align="left" >{item.AWSB_Submitted_Date}</TableCell>
-                                                            <TableCell align="left" >{item.AWB_count}</TableCell>
-                                                            <TableCell align="left" >{item.Email_Remainder}</TableCell>
-                                                            <TableCell align="left" >{item.Action}</TableCell>
-                                                            </TableRow>
-                                                        ))
-                                                    }
-
-                                                </TableBody>
-
-                                            </Table>
-
-                                        </TableContainer>
-                    
-                                        <div className="pagination" style={{marginTop:"-15px"}}>
+                                  
+                                <h4 style={{margin:0, paddingTop:"15px", fontFamily:"sans-serif", fontWeight:"bold"}}>Search Results for</h4>
+                                <p className="pagination" style={{position:"auto", marginTop:"-35px", marginBottom:"-15px"}}>
                                         <TablePagination
-                                            rowsPerPageOptions={[5, 10, 50]}
+                                            pageLengthOptions={[5,10,20]}
                                             component="div"
                                             count={data.length}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
                                             onPageChange={handleChangePage}
                                             onRowsPerPageChange={handleChangeRowsPerPage}
+                                            
                                         />
-                                        </div>
+                                        </p>
+                                 
 
-                                    {/* </Paper> */}
+                                <Box sx={{ display: 'flex', flexDirection: 'row', border: 0.5, borderColor: "text.secondary"}} />
+                                <Box p={1} sx={{ display: 'flex', flexDirection: 'column' }}>
+                                    {/* <Paper sx={{ height: "40vh",width: '100%', overflow: 'hidden' }}> */}
+                                        <TableContainer component={Paper} >
+                                            <table>
+                                                <thead>
+                                                    <tr fontWeight="italic">
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem",}}>Date Of Registration</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Company Name</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Email ID</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Date of Approval</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Prev Renew Date</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Next Renew Date</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Expired</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Payment / Renew status</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Payment Date</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Payment Mode</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>AWSB Submitted Date</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>AWB count</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Email Remainder</th>
+                                                        <th align="left" style={{fontWeight:"bold", fontFamily:"sans-serif", fontSize:"0.8rem"}}>Action</th>
+                                    
+                                                    </tr>
+                                                
+
+                                                </thead>
+
+                                                <tbody>
+                                                    {apiData.map((item) => (
+                                                            <tr key={item.experiment_id}>
+                                                            <td align="left" >{item.Date_Of_Registration}</td>
+                                                            <td align="left" >{item.Company_Name}</td>
+                                                            <td align="left" >{item.Email_ID}</td>
+                                                            <td align="left" >{item.Date_of_Approval}</td>
+                                                            <td align="left" >{item.Prev_Renew_Date}</td>
+                                                            <td align="left" >{item.Next_Renew_Date}</td>
+                                                            <td align="left" >{item.Expired}</td>
+                                                            <td align="left" >{item.Renew_status}</td>
+                                                            <td align="left" >{item.Payment_Date}</td>
+                                                            <td align="left" >{item.Payment_Mode}</td>
+                                                            <td align="left" >{item.AWSB_Submitted_Date}</td>
+                                                            <td align="left" >{item.AWB_count}</td>
+                                                            <td align="left" >{item.Email_Remainder}</td>
+                                                            <td align="left" >{item.Action}</td>
+                                                            </tr>
+                                                        ))
+                                                    }
+
+                                                </tbody>
+
+                                            </table>
+
+                                        </TableContainer>
                    
                                 </Box>
 
 
                             </Paper>
                         
-                        </Box>
+                        {/* </Box> */}
                         {/* Footer */}
                             <Box>
                                 <footer className="footer" >
                                     <h5 style={{margin: "5px"}}>© 2021 Mphasis</h5>
                                 </footer>
                             </Box>
-                    </div>                
+                    {/* </div>                 */}
 
                     
                     
