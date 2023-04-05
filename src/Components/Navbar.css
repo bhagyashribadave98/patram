@@ -1,25 +1,3 @@
-/* .MuiBox-root .css-0 {
-    /* text-align: center; */
-    /* padding-top: 10px; */
-/* } */
-
-/* .logo {
-    position: fixed;
-    height: 40px;
-} */
-
-/* .company_name{
-    padding-top: 100px;
-} */
-
-/* .css-11b3ww9-MuiPaper-root-MuiAppBar-root{
-    position: fixed;
-} */
-/* #MuiGrid-root css-vj1n65-MuiGrid-root{
-  position: absolute;
-  padding-left: 920px;
-} */
-
 .a {
   text-decoration: none;
 }
@@ -73,13 +51,27 @@
   width: 100%;
 }
 
-.date{
-  height: 20px;
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  padding-left: 15px;
+  background-color: #f0edee;
+  border-left-style: hidden;
+  box-shadow: 5px 5px 5px grey;
+  height: 35px;
 }
 
+/* .outlined-basic{
+  padding-top:initial;
+} */
+
+/* .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  margin: auto;
+  height: 30px;
+} */
+
 #main-slider-container {
+  display: flex;
     width: 93.8%;
-    height: 140px;
+    height: 124px;
     background: rgb(4, 121, 199);
     margin-top: 50px;
     margin-left: 40px;
@@ -90,7 +82,6 @@
   #slider {
     width: 100%;
     height: 100%;
-    white-space: nowrap;
     overflow-x: scroll;
     scrollbar-width: none;
     scroll-behavior: smooth;
@@ -112,16 +103,19 @@
     align-content: center;
     white-space: nowrap;
     font-family:'Times New Roman', Times, sans-serif;
+    box-shadow: inset 0 -3em 3em rgba(35, 17, 136, 0.1), 0 0 0 2px rgb(238, 235, 235),
+    0.3em 0.3em 1em rgba(62, 9, 122, 0.3);
   }
 
-  .slider-icon.left, .slider-icon.right {
+  /* .slider-icon.left, .slider-icon.right {
     background: white;
     border-radius: 100%;
     position: absolute;
     opacity: 0.5;
     font-size: xxx-large;
     margin: -10px;
-    box-shadow: 2px blue 2px 2px 2px rgb(0 0 0 /12%);
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
 
@@ -135,18 +129,18 @@
 
   .slider-icon.left:hover, .slider-icon.right:hover {
     opacity: 1;
-  }
+  } */
 
   .slider-card {
     width: 66px;
-    height: 133px;
+    height: 116px;
     background: rgb(50, 155, 224);
-    border-radius: 5px;
+    border-radius: 2px;
     display: inline-block;
     margin-left: 12px;
     margin-right: 12px;
     margin-top: 4px;
-    box-shadow: 2px blue 2px 2px 2px rgb(0 0 0 /12%);
+    box-shadow: 5px 5px 5px rgb(18, 67, 228);
     
   }
 
@@ -166,11 +160,11 @@
 
   table {
     border-collapse: collapse;
+    font-family:  sans-serif;
     background-color: rgb(236, 228, 228);
     font-size: 10px;
     width: 100%;
-    table-layout:auto;
-    position: relative;
+    table-layout: fixed;
     word-wrap: break-word;
 }
 
@@ -179,10 +173,13 @@
     font-family: sans-serif;
     height: 1.5cm;
     text-align: center;
+    margin-left: 28px;
   }
 
   table td {
-    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
   }
 
   table thead td {
@@ -191,35 +188,29 @@
     font-weight: bold;
     font-size: 13px;
     border: 1px solid #54585d;
+    margin-left: 20px;
   }
 
   table tbody td {
     color: #070707;
     border: 1px solid #dddfe1;
-    font-family: serif;
-    font-size:medium
+    font-family: sans-serif;
+    font-size: small;
   }
 
   table tbody tr {
-    background-color: #f9fafb;
+    background-color: white;
   }
 
-  table tbody tr:nth-child(odd) {
-    background-color: #ffffff;
+  .footer {
+    display: flex;
+    background-color: #dadadb;
+    height: 40px;
+    color: #a8a0a3;
+    width: 100%;
+    align-items: center;
   }
 
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-    height: 100%;
-    table-layout: fixed;
-}
-
-td {
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
-}
+ 
 
 
