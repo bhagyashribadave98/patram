@@ -52,28 +52,27 @@
 }
 
 .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
-  padding-left: 15px;
   background-color: #f0edee;
-  border-left-style: hidden;
   box-shadow: 5px 5px 5px grey;
   height: 35px;
+  margin: top 5px; 
 }
 
-/* .outlined-basic{
-  padding-top:initial;
-} */
 
-/* .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
-  margin: auto;
-  height: 30px;
-} */
+.MuiFormLabel-root{
+  margin: 0;
+  padding: 0;
+  line-height: 1%;
+
+}
+
 
 #main-slider-container {
-  display: flex;
+    display: flex;
     width: 93.8%;
     height: 124px;
     background: rgb(4, 121, 199);
-    margin-top: 50px;
+    margin-top: 25px;
     margin-left: 40px;
     border-radius: 3px;
     box-shadow: 2px 2px 2px 2px rgb(216, 216, 216) ;

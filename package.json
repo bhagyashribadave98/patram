@@ -2,6 +2,7 @@
   "name": "patram-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -62,5 +63,18 @@
     "css-minimizer-webpack-plugin": "^4.2.2",
     "postcss": "^8.4.21",
     "webpack": "^5.75.0"
-  }
+  },
+  "description": "",
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhagyashribadave98/patram.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhagyashribadave98/patram/issues"
+  },
+  "homepage": "https://github.com/bhagyashribadave98/patram#readme"
 }

@@ -59,6 +59,7 @@
 // export default Navbar;
 
 import axios from 'axios'
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import React,{ useState, useEffect} from "react";
 import { Slides } from "@mui/material";
 //import { Component, Fragment } from "react-boostrap";
@@ -67,7 +68,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link, NavLink } from 'react-router-dom';
+//import { Link, NavLink } from 'react-router-dom';
 import { Box, Button, MenuItem, Paper, Select, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Modal, Grid, Container, AppBar, Toolbar, Tab, Tabs } from "@mui/material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -79,36 +80,41 @@ import Profile from "./Profile.jsx";
 import CreateAWB from "./CreateAWB.jsx"
 import Print from "./Print";
 import TrackShipment from "./TrackShipment";
+import { Link } from '@mui/material';
 import Search from "./Search";
-import $ from "jquery";
+const config = {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      'Content-Type': 'text/plain'
+    }
+  };
 
 const Navbar = () => {
-    const slides = [
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
-        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66}
-];
-
-
   
-
+    let navigate = useNavigate();
     const [value, setvalue] = useState(0);
     const [apiData, setApiData] = useState([])
-    const [post, setPost] = useState(null)
+    const [post, setPost] = useState()
     const [page, setPage] = useState(2);
     const [data, setData] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    //const [slides, setSlides] = useState([]);
-    // const routes = ["./datepicker"]
+    const typeData = JSON.stringify({ type: 'ViewAll' });
+    const [slides, setSlides] = useState([
+        {freight:"Jan", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Feb", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Mar", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Apr", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"May", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Jun", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Jul", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Aug", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Sep", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Oct", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Nov", forwarders:2022, renewed: 4, forcasted: 4, active: 66},
+        {freight:"Dec", forwarders:2022, renewed: 4, forcasted: 4, active: 66}
+    ]);
+    //const routes = ["./datepicker"]
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -129,44 +135,51 @@ const Navbar = () => {
             });
     }
 
-    function month_year() {
-        axios.post('',data)
+    function postData() {
+         axios.post("http://127.0.0.1:5000/Get_Subcription_Renewals_Count", {
+
+         })
             .then((response) => {
-                setPost(response.data);
+                setSlides(response.data);
             }).catch((err) => {
                 console.log(err)
             });
     }
 
-    function setDataToStorage(Date_Of_Registration, Company_Name, Email_ID, Date_of_Approval, Prev_Renew_Date, Next_Renew_Date, Expired, Renew_status, Payment_Date, Payment_Mode, AWSB_Submitted_Date, AWB_count, Email_Remainder, Action){
-        localStorage.setItem('Date_Of_Registration',Date_Of_Registration);
-        localStorage.setItem('Company_Name',Company_Name);
-        localStorage.setItem('Email_ID',Email_ID);
-        localStorage.setItem('Date_of_Approval',Date_of_Approval);
-        localStorage.setItem('Prev_Renew_Date',Prev_Renew_Date)
-        localStorage.setItem('Next_Renew_Date',Next_Renew_Date)
-        localStorage.setItem('Expired',Expired)
-        localStorage.setItem('Renew_status',Renew_status)
-        localStorage.setItem('Payment_Date',Payment_Date)
-        localStorage.setItem('Payment_Mode',Payment_Mode)
-        localStorage.setItem('AWSB_Submitted_Date',AWSB_Submitted_Date)
-        localStorage.setItem('AWB_count',AWB_count)
-        localStorage.setItem('Email_Remainder',Email_Remainder)
-        localStorage.setItem('Action',Action)   
+    // const postData = async () => {
+    //     await axios.post("http://127.0.0.1:5000/Get_Subcription_Renewals_Count", typeData, JSON.stringify(config))
+    //         .then((resp) => {
+    //             sessionStorage.setSlide("postData", JSON.stringify(resp.data));
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    //         navigate("/navbar");
+    // }
 
 
-    }
+    // function setDataToStorage(Date_Of_Registration, Company_Name, Email_ID, Date_of_Approval, Prev_Renew_Date, Next_Renew_Date, Expired, Renew_status, Payment_Date, Payment_Mode, AWSB_Submitted_Date, AWB_count, Email_Remainder, Action){
+    //     localStorage.setItem('Date_Of_Registration',Date_Of_Registration);
+    //     localStorage.setItem('Company_Name',Company_Name);
+    //     localStorage.setItem('Email_ID',Email_ID);
+    //     localStorage.setItem('Date_of_Approval',Date_of_Approval);
+    //     localStorage.setItem('Prev_Renew_Date',Prev_Renew_Date)
+    //     localStorage.setItem('Next_Renew_Date',Next_Renew_Date)
+    //     localStorage.setItem('Expired',Expired)
+    //     localStorage.setItem('Renew_status',Renew_status)
+    //     localStorage.setItem('Payment_Date',Payment_Date)
+    //     localStorage.setItem('Payment_Mode',Payment_Mode)
+    //     localStorage.setItem('AWSB_Submitted_Date',AWSB_Submitted_Date)
+    //     localStorage.setItem('AWB_count',AWB_count)
+    //     localStorage.setItem('Email_Remainder',Email_Remainder)
+    //     localStorage.setItem('Action',Action)   
+    // }
 
     useEffect(() => {
         getData();
+        postData();
     }, [])
 
-
-    $(document).ready(function () {
-        $('#experiment_id').DataTable({
-        lengthMenu: [ 3, 5, 10 ]
-        });
-    }); 
 
 
      return(
@@ -197,9 +210,9 @@ const Navbar = () => {
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
-                        <a href ="print" component={Print} style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>Print
+                        <Link href ="print" style={{color: "#fff", textDecoration:"none", fontSize:"1.1rem", fontFamily:"sans-serif"}}>Print
                             {/* <label="CreateAWB" className='setting' style={{color: "white"}}/> */}
-                        </a>
+                        </Link>
                     </Box>
 
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex"}}> 
@@ -226,9 +239,9 @@ const Navbar = () => {
                                 MPHASIS
                                 </Box>
                             <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}} >
-                                <Link to ='/profile'>
+                                <a href ='/profile'>
                                     <PersonIcon style={{color: "#fff"}}/>
-                                </Link>
+                                </a>
                             </Box>
                     
                     <Box p={2} sx={{alignItems: 'center', paddingTop: "10px", display:"flex", color: "#fff"}}> 
@@ -268,16 +281,20 @@ const Navbar = () => {
                         
                             <Paper elevation={23} style={{height: "79vh", maxWidth: "96%", marginTop:"-46px", marginLeft:"27px", borderRadius:"initial"}}>
                                 {/* <Container style={{marginLeft:"20px"}}> */}
-                                    <h4 style={{ paddingLeft:"25px", textAlign: 'left', fontSize: "20px", paddingTop: "10px", marginTop:"47px", fontFamily:"sans-serif"}}>Manage Subscription</h4>
+                                {/* <Box> */}
+                                    <h4 style={{ paddingLeft:"39px", textAlign: 'left', fontSize: "20px", paddingTop: "25px", marginTop:"47px", fontFamily:"sans-serif"}}>Manage Subscription</h4>
                                 {/* </Container> */}
 
                                 <Box>
-                                <div id="date" >
+                                <div className="date" style={{marginLeft:"1005px", marginTop:"-60px"}}>
                                     <LocalizationProvider dateAdapter={AdapterDayjs} >
-                                        <DatePicker label="hgsa" variant="filled" views={['month', 'year']} />
+                                    <DatePicker label="Select Start Date" sx={{height:"25px"}} slotProps={{ textField: { size: 'small' } }} views={['month', 'year']} >
+                                        {/* <DatePicker views={['month', 'year']}/> */}
+                                    </DatePicker>
                                     </LocalizationProvider>
                                 </div>
                                 </Box>
+                                {/* </Box> */}
                                 
 
 
@@ -287,19 +304,19 @@ const Navbar = () => {
                                             <h5 style={{marginTop: "-19px"}}>Forwarders</h5>
                                             <h5 style={{marginTop: "-12px"}}>Renewed/New</h5>
                                             <h5 style={{marginTop: "-18px"}}>Forcasted</h5>
-                                            <h5 style={{marginTop: "-14px", color:"black"}}>Active</h5>
+                                            <h5 style={{marginTop: "-14px"}}>Active</h5>
                                         </div>
             
                                     <div id="slider" style={{marginLeft:"20px", fontFamily:"sans-serif", fontColor:"white"}}>
                                     {
-                                        slides.map((slide,index) => {
+                                        slides.map((slide) => {
                                         return(
-                                            <div className="slider-card" key={index}>
+                                            <div className="slider-card" key={slide.index}>
                                                 <p className="slider-card-freight" style={{marginTop: "3px", textAlign:"center"}}>{slide.freight}</p>
                                                 <p className="slider-card-forwarders" style={{marginTop: "-12px", textAlign:"center", fontSize:"12px"}}>{slide.forwarders}</p>
                                                 <p className="slider-card-renewed" style={{marginTop: "-4px", textAlign:"center"}}>{slide.renewed}</p>
                                                 <p className="slider-card-forcasted" style={{marginTop: "-9px", textAlign:"center"}}>{slide.forcasted}</p>
-                                                <p className="slider-card-active" style={{marginTop: "-10px", textAlign:"center", color:"black"}}>{slide.active}</p>
+                                                <p className="slider-card-active" style={{marginTop: "-10px", textAlign:"center"}}>{slide.active}</p>
                                             </div>
                                         )
                                     })
@@ -308,8 +325,9 @@ const Navbar = () => {
                                 </div>
                                   
                                 <h4 style={{margin:0, paddingTop:"15px", fontFamily:"sans-serif", fontWeight:"bold", paddingLeft:"40px"}}>Search Results for</h4>
-                                <h5 className="pagination" style={{marginTop:"-35px", marginBottom:"-15px", justifyContent:"center"}}>
-                                <TablePagination
+                                <h5 style={{marginTop:"-35px", marginBottom:"-10px", justifyContent:"center"}}>
+                                <Box style={{paddingRight:"23px"}}>
+                                <TablePagination 
                                     rowsPerPageOptions={[5, 10, 25]}
                                     component="div"
                                     count={data.length}
@@ -318,13 +336,14 @@ const Navbar = () => {
                                     onPageChange={handleChangePage}
                                     onRowsPerPageChange={handleChangeRowsPerPage}
                                 />
+                                </Box>
                                         </h5>
                                  
 
                                 <Box sx={{ display: 'flex', flexDirection: 'row', border: 0.5, borderColor: "text.secondary"}} />
                                 <Box p={1} sx={{ display: 'flex', flexDirection: 'column' }}>
                                     {/* <Paper > */}
-                                        <TableContainer component={Paper} sx={{ height: "33vh",width: '100%', pageLayout:"static"}}>
+                                        <TableContainer component={Paper} sx={{ height: "42vh",width: '100%', pageLayout:"static"}}>
                                             <table style={{width:"96%", pageLayout:"inherit", height:"20px"}}>
                                                 <thead>
                                                     <tr fontWeight="italic">
@@ -366,7 +385,7 @@ const Navbar = () => {
                                                             <td align="left" >{item.AWSB_Submitted_Date}</td>
                                                             <td align="left" >{item.AWB_count}</td>
                                                             <td align="left" >{item.Email_Remainder}</td>
-                                                            <td align="left" >{item.Action}</td>
+                                                            <td align="left" ><Button style={{height:"30px"}} variant="contained" label="Edit">{item.Action}</Button>{item.Action}</td>
                                                             </tr>
                                                         ))
                                                     }
